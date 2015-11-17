@@ -1,3 +1,4 @@
+reset;
 model kidneys1.mod;
 data kidneys1.dat;
 option solver cplex; # Using full version ampl-cplex

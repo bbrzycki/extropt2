@@ -1,0 +1,6 @@
+reset;
+model kidneys3.mod;
+data kidneys3.dat;
+option solver cplex; # Using full version ampl-cplex
+solve;
+# print {i in DONORS}: {j in DONORS} visualization_aid[i,j] > kidneys3.out;

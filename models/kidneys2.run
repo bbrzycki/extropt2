@@ -1,0 +1,7 @@
+reset;
+model kidneys2.mod;
+data kidneys2.dat;
+option solver cplex; # Using full version ampl-cplex
+solve;
+print {i in DONORS}: {j in PATIENTS} pair_exchanges[i,j] > kidneys2.out;
+display pair_exchanges;

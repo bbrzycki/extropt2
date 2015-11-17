@@ -5,7 +5,7 @@ set PATIENTS := 1 .. n;	    # set of patients
 
 param exchanges {DONORS, PATIENTS} >= 0; # values for entries of the matrix
 
-set VALID_EXCHANGES := {i in DONORS, j in PATIENTS: exchanges[i,j] > 0}; # set of valid exchanges
+set VALID_EXCHANGES := {i in DONORS, j in PATIENTS: exchanges[i,j] > 0 and exchanges[j,i] > 0 }; # set of valid exchanges
 
 var pair_exchanges {DONORS, PATIENTS} binary; # binary variable for whether a paired exchange exists
 
@@ -20,7 +20,7 @@ subject to PatientLimit {j in PATIENTS}:
 	sum{i in DONORS} pair_exchanges[i,j] <= 1;
 
 subject to PairedExchange1 {(i,j) in VALID_EXCHANGES}:
-	pair_exchanges[i,j] * exchanges[i,j] = pair_exchanges[j,i] * exchanges[j,i];
+	pair_exchanges[i,j] <= exchanges[i,j];
 
 subject to PairedExchange2 {(i,j) in VALID_EXCHANGES}:
 	pair_exchanges[i,j] = pair_exchanges[j,i];
