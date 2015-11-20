@@ -1,4 +1,4 @@
-param n := 10; # number of patient donor pairs
+param n := 50; # number of patient donor pairs
 
 # read in data for potential patient donor exchanges
-read {i in DONORS, j in PATIENTS} exchanges[i,j] < 10_raw.txt;
+read {i in DONORS, j in PATIENTS} exchanges[i,j] < 50_raw.txt;

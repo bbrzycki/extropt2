@@ -6,6 +6,8 @@ set PATIENTS := 1 .. n;	    # set of patients
 param exchanges {DONORS, PATIENTS} >= 0; # values for entries of the matrix
 
 var pair_exchanges {DONORS, PATIENTS} binary; # binary variable for whether a paired exchange exists
+var two_cycle {DONORS, PATIENTS} binary;
+var three_cycle {DONORS, PATIENTS, PATIENTS} binary;
 
 set VALID_CYCLES := {i in DONORS, j in DONORS, k in DONORS, l in DONORS: 
 	i <> j and i <> k and i <> l and j <> k and j <> l and k <>l}; # set of valid exchanges
