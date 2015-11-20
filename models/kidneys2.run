@@ -2,6 +2,8 @@ reset;
 model kidneys2.mod;
 data kidneys2.dat;
 option solver cplex; # Using full version ampl-cplex
+option cplex_options 'timing=1 timelimit=120';
 solve;
-print {i in DONORS}: {j in PATIENTS} pair_exchanges[i,j] > kidneys2.out;
+# print {i in DONORS}: {j in PATIENTS} pair_exchanges[i,j] > kidneys2.out;
 display pair_exchanges;
+display num_exchanges;

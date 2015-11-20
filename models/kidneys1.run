@@ -2,6 +2,8 @@ reset;
 model kidneys1.mod;
 data kidneys1.dat;
 option solver cplex; # Using full version ampl-cplex
+option cplex_options 'timing=1 mipdisplay=3';
 solve;
 print {i in DONORS}: {j in PATIENTS} pair_exchanges[i,j] > kidneys1.out;
-display pair_exchanges;
+# display pair_exchanges;
+display num_exchanges;

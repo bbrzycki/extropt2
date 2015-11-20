@@ -1,0 +1,9 @@
+reset;
+model kidneys2alt.mod;
+data kidneys2alt.dat;
+option solver cplex; # Using full version ampl-cplex
+option cplex_options 'timing=1 timelimit=120';
+solve;
+print {i in DONORS}: {j in PATIENTS} pair_exchanges[i,j] > kidneys2alt.out;
+# display pair_exchanges;
+display num_exchanges;

@@ -1,7 +1,7 @@
 param n >= 1, integer;	# number of patient donor pairs
 
 set DONORS	 := 1 .. n;	# set of donors
-set PATIENTS := 1 .. n;	    # set of patients
+set PATIENTS := 1 .. n;	# set of patients
 
 param exchanges {DONORS, PATIENTS} >= 0; # values for entries of the matrix
 
@@ -19,8 +19,8 @@ subject to DonorLimit {i in DONORS}:
 subject to PatientLimit {j in PATIENTS}: 
 	sum{i in DONORS} pair_exchanges[i,j] <= 1;
 
-subject to PairedExchange1 {(i,j) in VALID_EXCHANGES}:
+subject to ValidExchange {(i,j) in VALID_EXCHANGES}:
 	pair_exchanges[i,j] <= exchanges[i,j];
 
-subject to PairedExchange2 {(i,j) in VALID_EXCHANGES}:
+subject to PairedExchange {(i,j) in VALID_EXCHANGES}:
 	pair_exchanges[i,j] = pair_exchanges[j,i];
